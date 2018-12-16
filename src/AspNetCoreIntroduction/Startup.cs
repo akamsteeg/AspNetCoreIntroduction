@@ -28,11 +28,7 @@ namespace AspNetCoreIntroduction
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddScoped(typeof(RandomGeneratorService));
-            //services.AddSingleton(typeof(RandomGeneratorService));
-
-            services.AddScoped(typeof(DefaultRandomService));
-            //services.AddSingleton(typeof(DefaultRandomService));
+            services.AddRandomGenerator();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
