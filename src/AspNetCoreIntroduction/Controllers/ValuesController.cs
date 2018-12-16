@@ -8,9 +8,9 @@ namespace AspNetCoreIntroduction.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly IRandomService _randomService;
+        private readonly DefaultRandomService _randomService;
 
-        public ValuesController(IRandomService randomService)
+        public ValuesController(DefaultRandomService randomService)
         {
             this._randomService = randomService ?? throw new ArgumentNullException(nameof(randomService));
         }

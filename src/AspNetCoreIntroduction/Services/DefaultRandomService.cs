@@ -4,18 +4,19 @@ namespace AspNetCoreIntroduction.Services
 {
     public sealed class DefaultRandomService : IRandomService
     {
-        private readonly int _randomValue;
+        private readonly RandomGeneratorService _randomGenerator;
 
-        public DefaultRandomService()
+        public DefaultRandomService(RandomGeneratorService randomGenerator)
         {
-            var random = new Random();
 
-            this._randomValue = random.Next();
+            this._randomGenerator = randomGenerator ?? throw new ArgumentNullException(nameof(randomGenerator));
         }
 
         public int GetValue()
         {
-            return this._randomValue;
+            var result = this._randomGenerator.GetValue();
+
+            return result;
         }
     }
 }
