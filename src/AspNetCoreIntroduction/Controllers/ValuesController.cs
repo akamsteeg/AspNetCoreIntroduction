@@ -1,4 +1,5 @@
 ﻿using System;
+using AspNetCoreIntroduction.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreIntroduction.Controllers
@@ -7,12 +8,18 @@ namespace AspNetCoreIntroduction.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IRandomService _randomService;
+
+        public ValuesController(IRandomService randomService)
+        {
+            this._randomService = randomService ?? throw new ArgumentNullException(nameof(randomService));
+        }
+       
+
         [HttpGet("random")]
         public ActionResult<int> Random()
         {
-            var random = new Random();
-
-            var result = random.Next();
+            var result = this._randomService.GetValue();
 
             return result;
         }
