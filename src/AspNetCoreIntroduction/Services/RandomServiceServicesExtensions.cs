@@ -6,11 +6,9 @@ namespace AspNetCoreIntroduction.Services
     {
         public static void AddRandomGenerator(this IServiceCollection services)
         {
-            services.AddScoped(typeof(RandomGeneratorService));
-            //services.AddSingleton(typeof(RandomGeneratorService));
+            services.AddTransient(typeof(RandomGeneratorService));
 
             services.AddScoped(typeof(DefaultRandomService));
-            //services.AddSingleton(typeof(DefaultRandomService));
         }
     }
 }

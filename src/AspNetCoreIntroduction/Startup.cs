@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreIntroduction.Middleware;
 using AspNetCoreIntroduction.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,13 +39,11 @@ namespace AspNetCoreIntroduction
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
+
+            app.UseMiddleware<RandomHeaderMiddleware>(Array.Empty<object>());
+
             app.UseMvc();
         }
     }
